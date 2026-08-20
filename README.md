@@ -1,6 +1,6 @@
 # Arsenal Ticket Ballot Alert Bot
 
-A Telegram bot that watches Arsenal FC's public ECAL calendar feed and pings
+A Discord & Telegram bot that watches Arsenal FC's public ECAL calendar feed and pings
 subscribers the moment a ticket **ballot / registration / sale** window shows
 up, plus a reminder before it opens.
 

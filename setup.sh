@@ -40,5 +40,5 @@ fi
 echo
 echo "=========================================="
 echo " Setup complete!"
-echo " Run ./run.sh to start the bot."
+echo " Run ./run_telegram.sh or ./run_discord.sh to start."
 echo "=========================================="

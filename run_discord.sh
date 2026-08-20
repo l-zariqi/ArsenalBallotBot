@@ -13,7 +13,7 @@ if [ ! -f ".env" ]; then
 fi
 
 source venv/bin/activate
-echo "Starting the bot... this terminal must stay open while it runs."
+echo "Starting the Discord bot... this terminal must stay open while it runs."
 echo "Press Ctrl+C to stop it."
 echo
-python bot.py
+python discord_bot.py

@@ -51,6 +51,6 @@ if not exist .env (
 echo.
 echo ==========================================
 echo  Setup complete!
-echo  Double-click run.bat to start the bot.
+echo  Double-click run_telegram.bat or run_discord.bat to start.
 echo ==========================================
 pause

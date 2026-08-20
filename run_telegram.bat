@@ -1,5 +1,5 @@
 @echo off
-title Arsenal Ballot Bot
+title Arsenal Ballot Bot (Telegram)
 cd /d "%~dp0"
 
 if not exist venv (
@@ -16,7 +16,7 @@ if not exist .env (
 )
 
 call venv\Scripts\activate.bat
-echo Starting the bot... this window must stay open while it runs.
+echo Starting the Telegram bot... this window must stay open while it runs.
 echo Press Ctrl+C to stop it.
 echo.
 python bot.py

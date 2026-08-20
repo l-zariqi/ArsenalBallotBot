@@ -3,6 +3,7 @@
 
 # Local database (subscriber list + seen events) - machine-specific state
 bot_data.sqlite3
+discord_bot_data.sqlite3
 *.sqlite3
 
 # Python virtual environment

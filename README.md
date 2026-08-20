@@ -36,19 +36,58 @@ that's the fastest way to tell if the keyword list needs tweaking.
    opens Notepad for you to paste in your bot token — paste it after
    `BOT_TOKEN=`, save, close Notepad.
    **Mac/Linux**: open a terminal in the folder and run `./setup.sh` once
-   (you may need `chmod +x setup.sh run.sh` first).
-5. **Windows**: double-click `run.bat` to start the bot.
-   **Mac/Linux**: run `./run.sh`.
+   (you may need `chmod +x setup.sh run_telegram.sh run_discord.sh` first).
+5. **Windows**: double-click `run_telegram.bat` to start the bot.
+   **Mac/Linux**: run `./run_telegram.sh`.
 6. A black window will open and stay open — that means it's running. Go to
    Telegram, open a chat with your bot, and send `/start`.
 
 Closing that window stops the bot. To run it again later, just double-click
-`run.bat` (or `./run.sh`) — you don't need to repeat setup.
+`run_telegram.bat` (or `./run_telegram.sh`) — you don't need to repeat setup.
 
 For a bot that keeps running even when your computer is off, see
 **"Running it 24/7"** below.
 
-## Manual setup (for anyone who prefers the terminal)
+## Discord version
+
+`discord_bot.py` is the same alerting logic ported to Discord. Since a Discord
+server is shared rather than 1:1 like a Telegram DM, it works a bit
+differently: instead of subscribing individual users, an admin picks **one
+channel per server** to receive alerts, posted as rich embeds.
+
+### Setting it up
+
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications)
+   → **New Application** → give it a name.
+2. Open the **Bot** tab → **Reset Token** → copy it. This goes in `.env` as
+   `DISCORD_BOT_TOKEN`.
+3. Still on the Bot tab, you don't need any privileged intents (Message
+   Content, Presence, etc.) — this bot only uses slash commands and doesn't
+   read message content.
+4. Go to **OAuth2 → URL Generator**. Under **Scopes** tick `bot` and
+   `applications.commands`. Under **Bot Permissions** tick `Send Messages`
+   and `Embed Links`. Copy the generated URL, open it in a browser, and
+   invite the bot to your server.
+5. **Windows**: run `setup.bat` if you haven't already (it installs both the
+   Telegram and Discord dependencies), then double-click `run_discord.bat`.
+   **Mac/Linux**: `./setup.sh` then `./run_discord.sh`.
+6. In your server, run `/setalertchannel` in whichever channel you want
+   alerts posted to. (Requires the **Manage Server** permission.)
+
+### Commands
+
+| Command             | What it does                                          |
+|----------------------|--------------------------------------------------------|
+| `/setalertchannel`  | Post alerts in the channel this was run in (admin only) |
+| `/stopalerts`       | Stop posting alerts in this server (admin only)        |
+| `/status`           | List every ballot/registration event tracked so far    |
+| `/check`            | Force an immediate poll of the calendar                |
+
+It shares the same `.env` settings as the Telegram bot (`ICS_URL`,
+`ALERT_KEYWORDS`, `POLL_INTERVAL_MINUTES`, `REMINDER_HOURS_BEFORE`,
+`FALLBACK_URL`) — set them once and both bots use them. You can run either
+bot on its own, or both at the same time (they use separate database files
+so they won't interfere with each other).
 
 1. **Create the bot**: message [@BotFather](https://t.me/BotFather) on
    Telegram, run `/newbot`, and copy the token it gives you.

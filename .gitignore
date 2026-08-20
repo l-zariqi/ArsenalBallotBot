@@ -1,0 +1,15 @@
+# Secrets - never commit your real .env (it has your bot token in it)
+.env
+
+# Local database (subscriber list + seen events) - machine-specific state
+bot_data.sqlite3
+*.sqlite3
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# OS cruft
+.DS_Store
+Thumbs.db
